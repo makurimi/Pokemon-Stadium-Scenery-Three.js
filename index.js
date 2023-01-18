@@ -245,11 +245,12 @@ function createText() {
 }
 function createPlane(){
     let geometry = new THREE.PlaneGeometry(1000,1000,150)
+    const texture = loader.load("./assets/texture/grass2.jpg")
     let material = new THREE.MeshStandardMaterial({
-        color: "#8c3b0c"
+        map: texture,
     })
     let mesh = new THREE.Mesh(geometry,material)
-    mesh.position.set(0, -5, 0)
+    mesh.position.set(0,-10, 0)
     mesh.rotation.x = -Math.PI/2,0,0
     mesh.receiveShadow = true
     scene.add(mesh)
@@ -272,6 +273,119 @@ function blastoise(){
         scene.add(model)
         return model
     })
+}
+
+//piala
+function createTrophy(){
+    const geometry = new THREE.BoxGeometry(30,7.5,30)
+    const texture = loader.load("./assets/texture/trophy.jpg")
+    const material = new THREE.MeshPhongMaterial({
+        side : THREE.DoubleSide,
+        map : texture
+        
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(-150,-1,0)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createTrophy2(){
+    const geometry = new THREE.BoxGeometry(20,7.5,20)
+    const texture = loader.load("./assets/texture/trophy.jpg")
+    const material = new THREE.MeshPhongMaterial({
+        side : THREE.DoubleSide,
+        map : texture
+        
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(-150,5,0)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createTrophyCyn(){
+    const geometry = new THREE.CylinderGeometry(2.5, 2.5,25,7.5,7.5,7.5,7.5)
+    const texture = loader.load("./assets/texture/gold.jpg")
+    const material = new THREE.MeshPhongMaterial({
+        side : THREE.DoubleSide,
+        map : texture
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(-150,20,0)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createThropySph(){
+    const geometry = new THREE.SphereGeometry(20,15,20,-30,-20,-30)
+    const texture = loader.load("./assets/texture/gold.jpg")
+    const material = new THREE.MeshPhongMaterial({
+        side: THREE.DoubleSide,  
+        map: texture
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(-150,40,0)
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createTree(){
+    const geometry = new THREE.ConeGeometry(40,40,20)
+    const material = new THREE.MeshLambertMaterial({
+        color: 'green'
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(350,80,350)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+function createTree2(){
+    const geometry = new THREE.ConeGeometry(40,40,20)
+    const material = new THREE.MeshLambertMaterial({
+        color: 'green'
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(350,60,350)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createTree3(){
+    const geometry = new THREE.ConeGeometry(40,40,20)
+    const material = new THREE.MeshLambertMaterial({
+        color: 'green'
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(350,40,350)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
+}
+
+function createTreeCyn(){
+    const geometry = new THREE.CylinderGeometry(10, 10,60)
+    const material = new THREE.MeshPhongMaterial({
+        color: 'brown'
+    })
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.position.set(350,10,350)
+    mesh.rotation.x = 0
+    mesh.receiveShadow = true
+    mesh.castShadow= true
+    scene.add(mesh)
 }
 function stadium(){
     let loader = new GLTFLoader()
@@ -361,7 +475,7 @@ function init(){
     currentCamera = camera
     control = new OrbitControls(freeCamera, renderer.domElement)
 
-    // createPlane()
+    createPlane()
     blastoise()
     ambientLight()
     createSpot1()
@@ -383,6 +497,14 @@ function init(){
     createLayar1()
     createLayar2()
     createText()
+    createTrophy()
+    createTrophy2()
+    createTrophyCyn()
+    createThropySph()
+    createTree()
+    createTree2()
+    createTree3()
+    createTreeCyn()
 }
 
 function camAnimate(event){
